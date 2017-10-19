@@ -10,17 +10,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-
+//All above are imports
 /**
  * A base class that calls the Jackson code to construct itself and in the process several students.
  */
+//classes and methods(1 public and the rest are to be privates)
 public class Example {
 
 	/**
 	 * The best student in the class. Should also be in students.
 	 */
 	@NotNull
-	private final Student valedictorian;
+	private final Student valor;
 
 	/**
 	 * A list of all the students, including the valedictorian.
@@ -37,19 +38,21 @@ public class Example {
 	/**
 	 * Default constructor
 	 *
-	 * @param valedictorian The best student in the class. Should also be in students.
-	 * @param students      A list of all the students, including the valedictorian.
+	 * @param valor The best student in the class. Should also be in students.
+	 * @param students      A list of all the students, including the valor.
 	 * @param classname     The name of the class.
 	 */
+	//Jason creator that a method or
+	//a constructor is used to create an object
 	@JsonCreator
 	public Example(@NotNull @JsonProperty(required = true) Student valedictorian,
 	               @NotNull @JsonProperty(required = true) List<Student> students,
 	               @NotNull @JsonProperty(required = true) String classname) {
-		this.valedictorian = valedictorian;
+		this.valor = valedictorian;
 		this.students = students;
 		this.classname = classname;
 	}
-
+   //Takes data from yaml file and constructs it in java run forum
 	/**
 	 * Reads the Yaml file and uses it to construct an {@link Example}.
 	 *
@@ -67,8 +70,8 @@ public class Example {
 		//Deserialize the map into an object.
 		Example output = mapper.readValue(fixed, Example.class);
 		System.out.println("Class name: " + output.classname);
-		System.out.println("Valedictorian: " + output.valedictorian);
+		System.out.println("Valedictorian: " + output.valor);
 		System.out.println("Students: " + output.students);
-		System.out.println("Valedictorian is first student in Students: " + (output.valedictorian == output.students.get(0)));
+		System.out.println("Valedictorian is first student in Students: " + (output.valor == output.students.get(0)));
 	}
 }

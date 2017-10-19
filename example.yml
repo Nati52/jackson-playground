@@ -1,10 +1,12 @@
 ---
 classname: "blah"
+#Objects (ceral list as of cerealization)
 students:
     - students.Student:
         '@id': suzan
         grade: 12
-        name: "suzan"
+        name: "Suzan"
+        gpa: 4.0
     - students.LiveInStudent:
         &building5Student
         '@id': billy
@@ -24,6 +26,6 @@ students:
         name: "Sally"
         gpa: 3.2
         hasMealPlan: false
-valedictorian:
+valor:
     students.Student:
         suzan
